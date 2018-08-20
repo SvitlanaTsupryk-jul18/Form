@@ -250,3 +250,87 @@
                     opacity: 1;
                 }
             }
+
+            @media screen and (min-width:666px) and (max-width:768px) {
+                input[type="submit"] {
+                    padding: 0.8em;
+                }
+                .log a {
+                    padding-left: 10px;
+                }
+            }
+            
+            @media screen and (min-width:480px) and (max-width:666px) {
+                .log a {
+                    padding-left: 10px;
+                }
+                .logwith {
+                    width: 20%;
+                }
+                .login {
+                    width: 80%;
+                }
+                .btn1,
+                .btn2 {
+                    width: 70px;
+                    height: 60px;
+                    p {
+                        display: none;
+                    }
+                }
+                .btn1 i {
+                    padding: 0;
+                    top: 10px;
+                    left: 20px;
+                    font-size: 3em;
+                }
+                .btn2 svg {
+                    padding: 0;
+                    top: 10px;
+                    left: 15px;
+                    font-size: 2em;
+                }
+                .header h1 {
+                    left: 10%;
+                }
+            }
+            
+            @media screen and (min-width:320px) and (max-width:479px) {
+                .logwith {
+                    width: 20%;
+                    padding: 30px 10px;
+                }
+                .login {
+                    width: 80%;
+                    padding: 30px 10px;
+                    &::before {
+                        height: 90%;
+                    }
+                }
+                .btn1,
+                .btn2 {
+                    width: 50px;
+                    height: 40px;
+                    p {
+                        display: none;
+                    }
+                }
+                .btn1 i {
+                    padding: 0;
+                    top: 10px;
+                    left: 10px;
+                    font-size: 2em;
+                }
+                .btn2 svg {
+                    padding: 0;
+                    top: 10px;
+                    left: 10px;
+                    font-size: 1.5em;
+                }
+                .header h1 {
+                    font-size: 1em;
+                }
+                .log a {
+                    padding-left: 110px;
+                }
+            }
