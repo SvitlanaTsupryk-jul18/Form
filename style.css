@@ -158,18 +158,6 @@ input[type="password"] {
   border: 1px solid #dddddd;
   border-radius: 3px; }
 
-#check:before {
-  content: " ";
-  width: 13px;
-  height: 13px;
-  background-color: #3b99fc;
-  position: absolute;
-  border-radius: 2px;
-  visibility: hidden; }
-
-input[type="checkbox"]:checked ~ #check:before {
-  visibility: visible; }
-
 input[type="submit"] {
   background-color: #252525;
   padding: 0.8em 2.3em;
