@@ -73,7 +73,7 @@ body {
 
 .main {
   background-color: #f3f3f3;
-  height: 66%;
+  height: auto;
   display: flex; }
 
 .logwith, .login {
