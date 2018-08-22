@@ -9,8 +9,8 @@ body {
   font-size: 10pt;
   /*13px*/ }
 
-.header, .footer {
-  height: 17%; }
+.header {
+  height: 85px; }
 
 #reg {
   height: 50px;
@@ -32,7 +32,7 @@ body {
   max-width: 840px;
   margin: auto;
   margin-top: 3%;
-  height: 500px;
+  height: 100%;
   background-color: white;
   border-top: 2px solid #e62b1e;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
