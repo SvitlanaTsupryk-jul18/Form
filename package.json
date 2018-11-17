@@ -15,5 +15,13 @@
     "gulp-autoprefixer": "^5.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SvitlanaTsupryk-jul18/Form.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SvitlanaTsupryk-jul18/Form/issues"
+  },
+  "homepage": "https://github.com/SvitlanaTsupryk-jul18/Form#readme"
 }

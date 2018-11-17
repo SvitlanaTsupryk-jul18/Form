@@ -7,9 +7,9 @@ const autoprefixer = require('gulp-autoprefixer');
 
 
 gulp.task('sass', function() {
-    return gulp.src('./sass/**/*.scss')
+    return gulp.src('style.scss')
         .pipe(sass.sync().on('error', sass.logError))
-        .pipe(gulp.dest('./css'));
+        .pipe(gulp.dest('./'));
 });
 
 gulp.task('autopref', () =>
@@ -22,7 +22,7 @@ gulp.task('autopref', () =>
 );
 
 // Static server
-gulp.task('browser-sync', function () {
+gulp.task('browser-sync', function() {
     browserSync.init({
         server: {
             baseDir: "./"
@@ -30,11 +30,11 @@ gulp.task('browser-sync', function () {
     });
 });
 
-gulp.task('syncReload', function(){
+gulp.task('syncReload', function() {
     browserSync.reload();
 });
 
 
-gulp.task('default', ['browser-sync', 'sass'], function () {
+gulp.task('default', ['browser-sync', 'sass'], function() {
     gulp.watch('./sass/**/*.scss', ['sass', 'syncReload']);
 });
