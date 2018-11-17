@@ -194,15 +194,33 @@ $hover-color: #666666;
     }
 }
 
-input[type="text"],
-input[type="password"] {
+.form__input {
     width: 100%;
     padding: 1rem;
     border: 1px solid #dddddd;
     border-radius: 3px;
 }
 
-input[type="submit"] {
+.form__input.form__error {
+    border-color: red;
+}
+
+.form__input:focus {
+    outline: none;
+    box-shadow: 0 0 2px #08f5e1;
+}
+
+.message-error {
+    color: red;
+    display: none;
+}
+
+.form__input.form__error--required ~ .message-error--required {
+    display: block;
+}
+
+.btn {
+    margin-top: 2rem;
     background-color: #252525;
     padding: 0.8em 2.3em;
     border: 0;
