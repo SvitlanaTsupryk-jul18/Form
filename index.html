@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Button</title>
+    <title>form</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
@@ -21,41 +21,28 @@
         <section class="main">
             <section class="logwith">
                 <h2 hidden="true">Log in social</h2>
-                <button type="button" formaction="" class="btn1"><i class="fab fa-facebook-f "></i><p>Log in with Facebook</p></button>
+                <button type="button" formaction="" class="btn1"><img src="./assets/img/facebook-f-brands.svg" alt="facebook icon">
+                    <p>Log in with Facebook</p></button>
                 <button type="button" formaction="" class="btn2">
-                    <img src="./assets/img/google.svg" alt="google icon">
-                    <p>Log in with Google+</p>
+                    <img src="./assets/img/google-plus_104464.svg" alt="google icon">
+                   <p>Log in with Google+</p> 
                 </button>
             </section>
             <section class="login">
                 <h2 hidden="true">Log in</h2>
-                <form
-                    class="log js-form"
-                    action="/example/handler.php"
-                    method="post"
-                >
-                <div class="form__group">
-                    <label>Login *</label>
-                    <input
-                        required
-                        class="form__input"
-                        type="email"
-                        name="user-email"
-                        placeholder="Enter your email">
-                    <p class="message-error message-error--required">You should enter something here</p>
-                    <p class="message-error message-error--pattern">You should enter correct email</p>
-                </div>
+                <form class="log js-form" action="/example/handler.php" method="post">
+                    <div class="form__group">
+                        <label>Login *</label>
+                        <input required class="form__input" type="email" name="user-email" placeholder="Enter your email">
+                        <p class="message-error message-error--required">You should enter something here</p>
+                        <p class="message-error message-error--pattern">You should enter correct email</p>
+                    </div>
 
-                <div class="form__group">
-                    <label>Password *</label>
-                    <input
-                        required
-                        class="form__input"
-                        type="password"
-                        name="user-pass"
-                        placeholder="Enter your password">
-                    <p class="message-error message-error--required">You should enter something here</p>
-                </div>
+                    <div class="form__group">
+                        <label>Password *</label>
+                        <input required class="form__input" type="password" name="user-pass" placeholder="Enter your password">
+                        <p class="message-error message-error--required">You should enter something here</p>
+                    </div>
 
                     <!-- <p><input type="checkbox" name="check" id="check"><label for="check"> Remember me</label></p> -->
                     <!-- <p><input type="submit" value="Log in"><a href="#">Need help logging in?</a></p> -->
