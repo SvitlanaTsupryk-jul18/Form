@@ -172,6 +172,9 @@ body {
 .form__input.form__error--required ~ .message-error--required {
   display: block; }
 
+.form__input.form__error--pattern {
+  background-color: #d6978e; }
+
 .btn {
   margin-top: 2rem;
   background-color: #252525;

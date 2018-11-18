@@ -33,14 +33,16 @@
                 <form class="log js-form" action="/example/handler.php" method="post">
                     <div class="form__group">
                         <label>Login *</label>
-                        <input required class="form__input" type="email" name="user-email" placeholder="Enter your email">
+                        <input required class="form__input js-email" type="email" name="user-email" placeholder="Enter your email">
+                        <!--pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"-->
                         <p class="message-error message-error--required">You should enter something here</p>
                         <p class="message-error message-error--pattern">You should enter correct email</p>
                     </div>
 
                     <div class="form__group">
                         <label>Password *</label>
-                        <input required class="form__input" type="password" name="user-pass" placeholder="Enter your password">
+                        <input required class="form__input js-password" type="password" name="user-pass" placeholder="Enter your password">
+                        <!--pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"-->
                         <p class="message-error message-error--required">You should enter something here</p>
                     </div>
 

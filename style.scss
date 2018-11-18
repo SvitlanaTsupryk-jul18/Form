@@ -216,6 +216,10 @@ $hover-color: #666666;
     display: block;
 }
 
+.form__input.form__error--pattern {
+    background-color: #d6978e;
+}
+
 .btn {
     margin-top: 2rem;
     background-color: #252525;
