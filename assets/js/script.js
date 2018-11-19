@@ -40,6 +40,7 @@
 
             // try to submit
             submitForm();
+
         });
 
         function validateInputs() {
@@ -64,9 +65,10 @@
 
         function submitForm() {
             if (!isValid) return console.log('NOT VALID');
+
+            //checking for patterns
             var femail = form.querySelector(".js-email");
             var fpassword = form.querySelector(".js-password");
-
 
             if (validateEmail(femail.value)) {
                 console.log("ok");
@@ -75,6 +77,7 @@
                 alert("Please enter correct email");
                 isValid = false;
                 femail.classList.add(errors.default, errors.pattern);
+                //(femail.value.reset())();
             }
 
             if (validatePassword(fpassword.value)) {
@@ -84,15 +87,37 @@
                 alert("Password must contain 8 or more characters that are of at least one number, and one letter ");
                 fpassword.classList.add(errors.default, errors.pattern);
                 isValid = false;
+                // fpassword.reset();
             }
             // AJAX
+            // AJAX code to check input field values when onblur event triggerd.
+            function validate(femail, fpassword) {
+                var request = new XMLHttpRequest();
+                request.open('GET', 'validation.php', true);
+                request.send();
+                request.onreadystatechange = function() {
+                    if (request.status >= 200 && request.status < 400) {
+                        var answer = JSON.parse(request.responseText);
+                        var data = form.serialize()
+                    } else {
+                        alert("error"); // We reached our target server, but it returned an error
+                    }
+                };
 
+                request.onerror = function() {
+                    alert("error"); // There was a connection error of some sort
+                };
+
+            }
             // Success messages
-            //alert("Success!  The form has been completed, validated");
-            //
-            form.querySelector('.btn').disabled = true;
+            if (isValid) {
+                alert("Success!  The form has been completed, validated");
+                form.querySelector('.btn').disabled = true;
+            } else {
+                form.reset();
+            }
         }
-        //test	Метод RegExp, который тестирует совпадение в строке. Возвращет либо истину либо ложь.
+        //test	Метод, который тестирует совпадение в строке. Возвращет либо истину либо ложь.
         function validateEmail(email) {
             let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(String(email).toLowerCase());
