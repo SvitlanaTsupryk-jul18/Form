@@ -91,25 +91,25 @@
             }
             // AJAX
 
-            function sendForm(femail, fpassword) {
-                var request = new XMLHttpRequest();
-                request.open('GET', 'validation.php', encodeURIComponent(femail) + encodeURIComponent(fpassword) true);
-                request.send();
-                request.onreadystatechange = function() {
-                    if (request.status >= 200 && request.status < 400) {
-                        res(femail, fpassword);
-                        res.end("send");
-                        console.log("send");
-                    } else {
-                        alert("error:" + request.responseText); // We reached our target server, but it returned an error
-                    }
-                };
+            // function sendForm(femail, fpassword) {
+            //     var request = new XMLHttpRequest();
+            //     request.open('GET', 'validation.php', encodeURIComponent(femail) + encodeURIComponent(fpassword) true);
+            //     request.send();
+            //     request.onreadystatechange = function() {
+            //         if (request.status >= 200 && request.status < 400) {
+            //             res(femail, fpassword);
+            //             res.end("send");
+            //             console.log("send");
+            //         } else {
+            //             alert("error:" + request.responseText); // We reached our target server, but it returned an error
+            //         }
+            //     };
 
-                request.onerror = function() {
-                    alert("error"); // There was a connection error of some sort
-                };
+            //     request.onerror = function() {
+            //         alert("error"); // There was a connection error of some sort
+            //     };
 
-            }
+            // }
 
 
             // Success messages
