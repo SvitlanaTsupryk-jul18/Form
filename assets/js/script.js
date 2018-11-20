@@ -6,7 +6,6 @@
 
 
 
-
     function jsForm() {
         let form = document.querySelector('.js-form');
         // check if form exists
@@ -76,7 +75,7 @@
             } else {
                 alert("Please enter correct email");
                 isValid = false;
-                femail.classList.add(errors.default, errors.pattern);
+                femail.classList.add(errors.pattern);
                 //(femail.value.reset())();
             }
 
@@ -85,7 +84,7 @@
                 isValid = true;
             } else {
                 alert("Password must contain 8 or more characters that are of at least one number, and one letter ");
-                fpassword.classList.add(errors.default, errors.pattern);
+                fpassword.classList.add(errors.pattern);
                 isValid = false;
                 // fpassword.reset();
             }
@@ -119,6 +118,7 @@
                 form.querySelector('.btn').disabled = true;
             } else {
                 form.reset();
+
             }
         }
         //test	Метод, который тестирует совпадение в строке. Возвращет либо истину либо ложь.
