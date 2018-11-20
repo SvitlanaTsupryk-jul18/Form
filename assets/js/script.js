@@ -90,17 +90,18 @@
                 // fpassword.reset();
             }
             // AJAX
-            // AJAX code to check input field values when onblur event triggerd.
-            function validate(femail, fpassword) {
+
+            function sendForm(femail, fpassword) {
                 var request = new XMLHttpRequest();
-                request.open('GET', 'validation.php', true);
+                request.open('GET', 'validation.php', encodeURIComponent(femail) + encodeURIComponent(fpassword) true);
                 request.send();
                 request.onreadystatechange = function() {
                     if (request.status >= 200 && request.status < 400) {
-                        var answer = JSON.parse(request.responseText);
-                        var data = form.serialize()
+                        res(femail, fpassword);
+                        res.end("send");
+                        console.log("send");
                     } else {
-                        alert("error"); // We reached our target server, but it returned an error
+                        alert("error:" + request.responseText); // We reached our target server, but it returned an error
                     }
                 };
 
@@ -109,8 +110,11 @@
                 };
 
             }
+
+
             // Success messages
             if (isValid) {
+                sendForm();
                 alert("Success!  The form has been completed, validated");
                 form.querySelector('.btn').disabled = true;
             } else {
@@ -118,6 +122,7 @@
             }
         }
         //test	Метод, который тестирует совпадение в строке. Возвращет либо истину либо ложь.
+
         function validateEmail(email) {
             let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(String(email).toLowerCase());
