@@ -69,52 +69,57 @@
             var femail = form.querySelector(".js-email");
             var fpassword = form.querySelector(".js-password");
 
+
             if (validateEmail(femail.value)) {
                 console.log("ok");
                 isValid = true;
             } else {
-                alert("Please enter correct email");
+                swal({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'Please enter correct email!'
+                });
+                //alert("Please enter correct email");
                 isValid = false;
                 femail.classList.add(errors.pattern);
-                //(femail.value.reset())();
+
             }
 
             if (validatePassword(fpassword.value)) {
                 console.log("ok");
                 isValid = true;
             } else {
-                alert("Password must contain 8 or more characters that are of at least one number, and one letter ");
+                swal({
+
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'Password must contain 8 or more characters that are of at least one number, and one letter ',
+                    footer: '<a href>Why do I have this issue?</a>'
+                });
+                // alert("Password must contain 8 or more characters that are of at least one number, and one letter ");
                 fpassword.classList.add(errors.pattern);
                 isValid = false;
                 // fpassword.reset();
             }
             // AJAX
 
-            // function sendForm(femail, fpassword) {
-            //     var request = new XMLHttpRequest();
-            //     request.open('GET', 'validation.php', encodeURIComponent(femail) + encodeURIComponent(fpassword) true);
-            //     request.send();
-            //     request.onreadystatechange = function() {
-            //         if (request.status >= 200 && request.status < 400) {
-            //             res(femail, fpassword);
-            //             res.end("send");
-            //             console.log("send");
-            //         } else {
-            //             alert("error:" + request.responseText); // We reached our target server, but it returned an error
-            //         }
-            //     };
 
-            //     request.onerror = function() {
-            //         alert("error"); // There was a connection error of some sort
-            //     };
-
-            // }
-
+            function sendForm() {
+                formData.append(email, password);
+                var request = new XMLHttpRequest();
+                request.open("POST", "http://foo.com/submitform.php");
+                request.send(formData);
+            }
 
             // Success messages
             if (isValid) {
-                sendForm();
-                alert("Success!  The form has been completed, validated");
+                //sendForm();
+                //alert("Success!  The form has been completed, validated");
+                swal(
+                    'Good job!',
+                    'You log in!',
+                    'success'
+                )
                 form.querySelector('.btn').disabled = true;
             } else {
                 form.reset();
@@ -122,6 +127,9 @@
             }
         }
         //test	Метод, который тестирует совпадение в строке. Возвращет либо истину либо ложь.
+        // function validatePattern(this.value) {
+        //     return pattern.test(String(this.value).toLowerCase());
+        // }
 
         function validateEmail(email) {
             let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

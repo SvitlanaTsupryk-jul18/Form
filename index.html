@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>form</title>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
@@ -33,16 +34,16 @@
                 <form class="log js-form" action="/example/handler.php" method="post">
                     <div class="form__group">
                         <label>Login *</label>
-                        <input required class="form__input js-email" type="email" name="user-email" placeholder="Enter your email">
-                        <!--pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"-->
+                        <input required class="form__input js-email" type="email" name="user-email" placeholder="Enter your email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+
                         <p class="message-error message-error--required">You should enter something here</p>
                         <p class="message-error message-error--pattern">You should enter correct email</p>
                     </div>
 
                     <div class="form__group">
                         <label>Password *</label>
-                        <input required class="form__input js-password" type="password" name="user-pass" placeholder="Enter your password">
-                        <!--pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"-->
+                        <input required class="form__input js-password" type="password" name="user-pass" placeholder="Enter your password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+
                         <p class="message-error message-error--required">You should enter something here</p>
                     </div>
 
@@ -70,6 +71,9 @@
             })
         })
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script> -->
     <script src="./assets/js/script.js"></script>
 </body>
 
