@@ -2,10 +2,6 @@
     // invocations
     jsForm();
 
-
-
-
-
     function jsForm() {
         let form = document.querySelector('.js-form');
         // check if form exists
@@ -22,8 +18,6 @@
             required: errorClass + '--required',
             pattern: errorClass + '--pattern'
         }
-
-
 
         form.addEventListener('submit', function(e) {
             // Event -> e, evt, event
@@ -66,33 +60,36 @@
             if (!isValid) return console.log('NOT VALID');
 
             //checking for patterns
-            var femail = form.querySelector(".js-email");
-            var fpassword = form.querySelector(".js-password");
-
+            let text = "";
             inputs.forEach(function(item, i, arr) {
-                // var pattern = inputs[i].querySelector("pattern");
-                console.log(inputs[i].pattern, inputs[i].value);
-                if (validatePattern(inputs)) {
-                    console.log("ok");
-                    isValid = true;
+                //console.log(inputs[i].pattern, inputs[i].value);
+                if (validatePattern(item)) {
+                    isPattern = true;
                 } else {
                     swal({
                         type: 'error',
                         title: 'Oops...',
-                        text: 'Please enter correct email!'
+                        html: text,
                     });
                     //alert("Please enter correct email");
-                    isValid = false;
-                    intuts[i].classList.add(errors.pattern);
-
+                    isPattern = false;
+                    item.classList.add(errors.pattern);
                 }
-
+                isValid = isPattern && isValid;
             });
 
             function validatePattern(input) {
-                console.log(inputs.pattern, inputs.value);
-                let re = inputs.pattern;
-                return re.test(String(input.value).toLowerCase());
+                //console.log(input.pattern, input.value);
+                let regex = new RegExp(input.pattern, "i");
+                if (regex.exec(input.value)) {
+                    return true;
+                } else {
+                    if (input.type == "email") {
+                        text = text + 'Please enter correct email!<br>';
+                    } else if (input.type == "password") {
+                        text = text + 'Password must contain 8 or more characters that are of at least one number, and one letter ';
+                    }
+                }
             }
 
             // function validateEmail(email) {
@@ -183,10 +180,6 @@
 
             }
         }
-        //test	Метод, который тестирует совпадение в строке. Возвращет либо истину либо ложь.
-        // function validatePattern(this.value) {
-        //     return pattern.test(String(this.value).toLowerCase());
-        // }
 
         function setToDefaultStyles() {
             inputs.forEach(element => {
