@@ -64,7 +64,8 @@
             inputs.forEach(function(item, i, arr) {
                 //console.log(inputs[i].pattern, inputs[i].value);
                 if (validatePattern(item)) {
-                    isPattern = true;
+                    console.log("ok");
+                    isValid *= isValid;
                 } else {
                     swal({
                         type: 'error',
@@ -72,10 +73,10 @@
                         html: text,
                     });
                     //alert("Please enter correct email");
-                    isPattern = false;
+                    isValid = false;
                     item.classList.add(errors.pattern);
                 }
-                isValid = isPattern && isValid;
+
             });
 
             function validatePattern(input) {
