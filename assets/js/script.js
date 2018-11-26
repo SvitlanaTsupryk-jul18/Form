@@ -69,38 +69,73 @@
             var femail = form.querySelector(".js-email");
             var fpassword = form.querySelector(".js-password");
 
+            inputs.forEach(function(item, i, arr) {
+                // var pattern = inputs[i].querySelector("pattern");
+                console.log(inputs[i].pattern, inputs[i].value);
+                if (validatePattern(inputs)) {
+                    console.log("ok");
+                    isValid = true;
+                } else {
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Please enter correct email!'
+                    });
+                    //alert("Please enter correct email");
+                    isValid = false;
+                    intuts[i].classList.add(errors.pattern);
 
-            if (validateEmail(femail.value)) {
-                console.log("ok");
-                isValid = true;
-            } else {
-                swal({
-                    type: 'error',
-                    title: 'Oops...',
-                    text: 'Please enter correct email!'
-                });
-                //alert("Please enter correct email");
-                isValid = false;
-                femail.classList.add(errors.pattern);
+                }
 
+            });
+
+            function validatePattern(input) {
+                console.log(inputs.pattern, inputs.value);
+                let re = inputs.pattern;
+                return re.test(String(input.value).toLowerCase());
             }
 
-            if (validatePassword(fpassword.value)) {
-                console.log("ok");
-                isValid = true;
-            } else {
-                swal({
+            // function validateEmail(email) {
+            //     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            //     return re.test(String(email).toLowerCase());
+            // }
 
-                    type: 'error',
-                    title: 'Oops...',
-                    text: 'Password must contain 8 or more characters that are of at least one number, and one letter ',
-                    footer: '<a href>Why do I have this issue?</a>'
-                });
-                // alert("Password must contain 8 or more characters that are of at least one number, and one letter ");
-                fpassword.classList.add(errors.pattern);
-                isValid = false;
-                // fpassword.reset();
-            }
+            // function validatePassword(password) {
+            //     let re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            //     return re.test(String(password).toLowerCase()) && password.length > 7;
+            // }
+
+
+            // if (validateEmail(femail.value)) {
+            //     console.log("ok");
+            //     isValid = true;
+            // } else {
+            //     swal({
+            //         type: 'error',
+            //         title: 'Oops...',
+            //         text: 'Please enter correct email!'
+            //     });
+            //     //alert("Please enter correct email");
+            //     isValid = false;
+            //     femail.classList.add(errors.pattern);
+
+            // }
+
+            // if (validatePassword(fpassword.value)) {
+            //     console.log("ok");
+            //     isValid = true;
+            // } else {
+            //     swal({
+            //         type: 'error',
+            //         title: 'Oops...',
+            //         text: 'Password must contain 8 or more characters that are of at least one number, and one letter ',
+            //         footer: '<a href>Why do I have this issue?</a>'
+            //     });
+            //     // alert("Password must contain 8 or more characters that are of at least one number, and one letter ");
+            //     fpassword.classList.add(errors.pattern);
+            //     isValid = false;
+            //     // fpassword.reset();
+            // }
             // AJAX
 
 
@@ -110,6 +145,28 @@
                 request.open("POST", "http://foo.com/submitform.php");
                 request.send(formData);
             }
+
+            // var form = document.forms.namedItem("fileinfo");
+            // form.addEventListener('submit', function(ev) {
+
+            //     var oOutput = document.querySelector("div"),
+            //         oData = new FormData(form);
+
+            //     oData.append("CustomField", "This is some extra data");
+
+            //     var oReq = new XMLHttpRequest();
+            //     oReq.open("POST", "stash.php", true);
+            //     oReq.onload = function(oEvent) {
+            //         if (oReq.status == 200) {
+            //             oOutput.innerHTML = "Uploaded!";
+            //         } else {
+            //             oOutput.innerHTML = "Error " + oReq.status + " occurred when trying to upload your file.<br \/>";
+            //         }
+            //     };
+
+            //     oReq.send(oData);
+            //     ev.preventDefault();
+            // }, false);
 
             // Success messages
             if (isValid) {
@@ -130,16 +187,6 @@
         // function validatePattern(this.value) {
         //     return pattern.test(String(this.value).toLowerCase());
         // }
-
-        function validateEmail(email) {
-            let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
-        }
-
-        function validatePassword(password) {
-            let re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-            return re.test(String(password).toLowerCase()) && password.length > 7;
-        }
 
         function setToDefaultStyles() {
             inputs.forEach(element => {
